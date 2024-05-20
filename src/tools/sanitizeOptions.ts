@@ -35,6 +35,13 @@ export default function sanitizeOptions(options: RequiredOptions): RequiredOptio
     margin: Number(newOptions.imageOptions.margin)
   };
 
+  newOptions.frameOptions = {
+    ...newOptions.frameOptions,
+    scale: Number(newOptions.frameOptions.scale),
+    offsetX: Number(newOptions.frameOptions.offsetX),
+    offsetY: Number(newOptions.frameOptions.offsetY)
+  };
+
   if (newOptions.margin > Math.min(newOptions.width, newOptions.height)) {
     newOptions.margin = Math.min(newOptions.width, newOptions.height);
   }

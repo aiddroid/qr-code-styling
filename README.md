@@ -49,7 +49,14 @@ npm install qr-code-styling
         imageOptions: {
             crossOrigin: "anonymous",
             margin: 20
-        }
+        },
+        frameOptions: {
+            image: "https://www.svgrepo.com/show/89640/circular-flowers-ornamental-frame.svg",
+            crossOrigin: "anonymous",
+            scale: 1,
+            offsetX: 0,
+            offsetY: 0
+        },
     });
 
     qrCode.append(document.getElementById("canvas"));
@@ -99,6 +106,7 @@ dotsOptions            |object                   |             |Dots styling opt
 cornersSquareOptions   |object                   |             |Square in the corners styling options
 cornersDotOptionsHelper|object                   |             |Dots in the corners styling options
 backgroundOptions      |object                   |             |QR background styling options
+frameOptions           |object                   |             |QR frame styling options
 
 `options.qrOptions` structure
 
@@ -131,6 +139,16 @@ Property|Type  |Default Value
 --------|------|-------------
 color   |string|`'#fff'`
 gradient|object|
+
+`options.frameOptions` structure
+
+Property|Type  |Default Value|Description
+--------|------|-------------|-----------
+image   |string|`''`|The image will be loaded as the QR code frame.
+crossOrigin|string(`'anonymous' 'use-credentials'`)|   |Set "anonymous" if you want to download QR frame from other origins.
+scale   |number|`1`|scale of the frame image size
+offsetX |number|`0`|offset on x axis
+offsetY |number|`0`|offset on y axis
 
 `options.cornersSquareOptions` structure
 

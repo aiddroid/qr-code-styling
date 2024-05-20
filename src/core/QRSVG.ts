@@ -36,6 +36,7 @@ export default class QRSVG {
   _options: RequiredOptions;
   _qr?: QRCode;
   _image?: HTMLImageElement;
+  _frame?: HTMLImageElement;
 
   //TODO don't pass all options to this class
   constructor(options: RequiredOptions) {
@@ -126,6 +127,11 @@ export default class QRSVG {
 
     if (this._options.image) {
       this.drawImage({ width: drawImageSize.width, height: drawImageSize.height, count, dotSize });
+    }
+
+    if (this._options.frameOptions.image) {
+      await this.loadFrame();
+      this.drawFrame();
     }
   }
 
@@ -384,6 +390,50 @@ export default class QRSVG {
 
     const image = document.createElementNS("http://www.w3.org/2000/svg", "image");
     image.setAttribute("href", options.image || "");
+    image.setAttribute("x", String(dx));
+    image.setAttribute("y", String(dy));
+    image.setAttribute("width", `${dw}px`);
+    image.setAttribute("height", `${dh}px`);
+
+    this._element.appendChild(image);
+  }
+
+  loadFrame(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const options = this._options;
+      const image = new Image();
+
+      if (!options.frameOptions.image) {
+        return reject("Frame is not defined");
+      }
+
+      if (typeof options.frameOptions.crossOrigin === "string") {
+        image.crossOrigin = options.frameOptions.crossOrigin;
+      }
+
+      this._frame = image;
+      image.onload = (): void => {
+        resolve();
+      };
+      image.src = options.frameOptions.image;
+    });
+  }
+
+  drawFrame(): void {
+    if (!this._frame) {
+      throw "Frame is not defined";
+    }
+    const options = this._options;
+    const frameOptions = options.frameOptions;
+    const scale = frameOptions.scale || 1;
+
+    const dx = frameOptions.offsetX;
+    const dy = frameOptions.offsetY;
+    const dw = options.width * scale;
+    const dh = options.height * scale;
+
+    const image = document.createElementNS("http://www.w3.org/2000/svg", "image");
+    image.setAttribute("href", frameOptions.image || "");
     image.setAttribute("x", String(dx));
     image.setAttribute("y", String(dy));
     image.setAttribute("width", `${dw}px`);

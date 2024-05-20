@@ -29,6 +29,13 @@ export interface RequiredOptions extends Options {
     color: string;
     gradient?: Gradient;
   };
+  frameOptions: {
+    image: string;
+    crossOrigin?: string;
+    scale: number;
+    offsetX: number;
+    offsetY: number;
+  };
 }
 
 const defaultOptions: RequiredOptions = {
@@ -54,6 +61,13 @@ const defaultOptions: RequiredOptions = {
   },
   backgroundOptions: {
     color: "#fff"
+  },
+  frameOptions: {
+    image: "",
+    crossOrigin: undefined,
+    scale: 1,
+    offsetX: 0,
+    offsetY: 0
   }
 };
 

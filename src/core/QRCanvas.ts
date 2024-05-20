@@ -32,6 +32,7 @@ export default class QRCanvas {
   _options: RequiredOptions;
   _qr?: QRCode;
   _image?: HTMLImageElement;
+  _frame?: HTMLImageElement;
 
   //TODO don't pass all options to this class
   constructor(options: RequiredOptions) {
@@ -122,6 +123,11 @@ export default class QRCanvas {
 
     if (this._options.image) {
       this.drawImage({ width: drawImageSize.width, height: drawImageSize.height, count, dotSize });
+    }
+
+    if (this._options.frameOptions.image) {
+      await this.loadFrame();
+      this.drawFrame();
     }
   }
 
@@ -405,6 +411,50 @@ export default class QRCanvas {
     const dh = height - options.imageOptions.margin * 2;
 
     canvasContext.drawImage(this._image, dx, dy, dw < 0 ? 0 : dw, dh < 0 ? 0 : dh);
+  }
+
+  loadFrame(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const options = this._options;
+      const image = new Image();
+
+      if (!options.frameOptions.image) {
+        return reject("Frame is not defined");
+      }
+
+      if (typeof options.frameOptions.crossOrigin === "string") {
+        image.crossOrigin = options.frameOptions.crossOrigin;
+      }
+
+      this._frame = image;
+      image.onload = (): void => {
+        resolve();
+      };
+      image.src = options.frameOptions.image;
+    });
+  }
+
+  drawFrame(): void {
+    const canvasContext = this.context;
+
+    if (!canvasContext) {
+      throw "canvasContext is not defined";
+    }
+
+    if (!this._frame) {
+      throw "frame is not defined";
+    }
+
+    const options = this._options;
+    const frameOptions = options.frameOptions;
+    const scale = frameOptions.scale || 1;
+
+    const dx = frameOptions.offsetX;
+    const dy = frameOptions.offsetY;
+    const dw = options.width * scale;
+    const dh = options.height * scale;
+
+    canvasContext.drawImage(this._frame, dx, dy, dw < 0 ? 0 : dw, dh < 0 ? 0 : dh);
   }
 
   _createGradient({

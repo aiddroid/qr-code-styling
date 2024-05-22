@@ -39,7 +39,8 @@ export default function sanitizeOptions(options: RequiredOptions): RequiredOptio
     ...newOptions.frameOptions,
     scale: Number(newOptions.frameOptions.scale),
     offsetX: Number(newOptions.frameOptions.offsetX),
-    offsetY: Number(newOptions.frameOptions.offsetY)
+    offsetY: Number(newOptions.frameOptions.offsetY),
+    position: newOptions.frameOptions.position === "top" ? "top" : "bottom"
   };
 
   if (newOptions.margin > Math.min(newOptions.width, newOptions.height)) {

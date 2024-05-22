@@ -35,6 +35,7 @@ export interface RequiredOptions extends Options {
     scale: number;
     offsetX: number;
     offsetY: number;
+    position: string;
   };
 }
 
@@ -67,7 +68,8 @@ const defaultOptions: RequiredOptions = {
     crossOrigin: undefined,
     scale: 1,
     offsetX: 0,
-    offsetY: 0
+    offsetY: 0,
+    position: "top"
   }
 };
 

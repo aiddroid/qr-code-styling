@@ -3,14 +3,17 @@
 
 JavaScript library for generating QR codes with a logo and styling.
 
-Try it here https://qr-code-styling.com
+Try it here https://the-qr-generator.com
 
 If you have issues / suggestions / notes / questions, please open an issue or contact me. Let's create a cool library together.
 ### Examples
 <p float="left">
-<img style="display:inline-block" src="https://raw.githubusercontent.com/kozakdenys/qr-code-styling/master/src/assets/facebook_example_new.png" width="240" />
-<img style="display:inline-block" src="https://raw.githubusercontent.com/kozakdenys/qr-code-styling/master/src/assets/qr_code_example.png" width="240" />
-<img style="display:inline-block" src="https://raw.githubusercontent.com/kozakdenys/qr-code-styling/master/src/assets/telegram_example_new.png" width="240" />
+<img style="display:inline-block" src="https://raw.githubusercontent.com/aiddroid/qr-code-styling/master/src/assets/facebook_example_new.png" width="240" />
+<img style="display:inline-block" src="https://raw.githubusercontent.com/aiddroid/qr-code-styling/master/src/assets/qr_code_example.png" width="240" />
+<img style="display:inline-block" src="https://raw.githubusercontent.com/aiddroid/qr-code-styling/master/src/assets/telegram_example_new.png" width="240" />
+<img style="display:inline-block" src="https://raw.githubusercontent.com/aiddroid/qr-code-styling/master/src/assets/the-qr-generator.com-framed-with-heart.png" width="240" />
+<img style="display:inline-block" src="https://raw.githubusercontent.com/aiddroid/qr-code-styling/master/src/assets/the-qr-generator.com-framed-with-dish.png" width="240" />
+<img style="display:inline-block" src="https://raw.githubusercontent.com/aiddroid/qr-code-styling/master/src/assets/the-qr-generator.com-framed-with-shopping-bag.png" width="240" />
 </p>
 
 ### Installation
@@ -55,7 +58,8 @@ npm install qr-code-styling
             crossOrigin: "anonymous",
             scale: 1,
             offsetX: 0,
-            offsetY: 0
+            offsetY: 0,
+            position: "top",
         },
     });
 
@@ -73,11 +77,11 @@ npm install qr-code-styling
 
 ---
 
-[**React example (source)**](https://github.com/kozakdenys/qr-code-styling-examples/tree/master/examples/react)
+[**React example (source)**](https://github.com/aiddroid/qr-code-styling-examples/tree/master/examples/react)
 
-[**Angular example (source)**](https://github.com/kozakdenys/qr-code-styling-examples/tree/master/examples/angular)
+[**Angular example (source)**](https://github.com/aiddroid/qr-code-styling-examples/tree/master/examples/angular)
 
-[**Vue example (source)**](https://github.com/kozakdenys/qr-code-styling-examples/tree/master/examples/vue)
+[**Vue example (source)**](https://github.com/aiddroid/qr-code-styling-examples/tree/master/examples/vue)
 
 ---
 
@@ -149,6 +153,7 @@ crossOrigin|string(`'anonymous' 'use-credentials'`)|   |Set "anonymous" if you w
 scale   |number|`1`|scale of the frame image size
 offsetX |number|`0`|offset on x axis
 offsetY |number|`0`|offset on y axis
+position|string|string(`'top' 'bottom'`)|The position of the frame layer
 
 `options.cornersSquareOptions` structure
 
@@ -232,5 +237,5 @@ extension|string (`'png' 'jpeg' 'webp' 'svg'`)|`'png'`      |File extension
 
 ### License
 
-[MIT License](https://raw.githubusercontent.com/kozakdenys/qr-code-styling/master/LICENSE). Copyright (c) 2021 Denys Kozak
+[MIT License](https://raw.githubusercontent.com/aiddroid/qr-code-styling/master/LICENSE). Copyright (c) 2024 Allen
 

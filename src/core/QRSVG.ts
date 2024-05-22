@@ -100,6 +100,10 @@ export default class QRSVG {
     }
 
     this.clear();
+    if (this._options.frameOptions.image && this._options.frameOptions.position === "bottom") {
+      await this.loadFrame();
+      this.drawFrame();
+    }
     this.drawBackground();
     this.drawDots((i: number, j: number): boolean => {
       if (this._options.imageOptions.hideBackgroundDots) {
@@ -129,7 +133,7 @@ export default class QRSVG {
       this.drawImage({ width: drawImageSize.width, height: drawImageSize.height, count, dotSize });
     }
 
-    if (this._options.frameOptions.image) {
+    if (this._options.frameOptions.image && this._options.frameOptions.position === "top") {
       await this.loadFrame();
       this.drawFrame();
     }

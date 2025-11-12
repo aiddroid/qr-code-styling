@@ -1,6 +1,6 @@
 {
   "name": "@aiddroid/qr-code-styling",
-  "version": "1.7.5",
+  "version": "1.7.6",
   "description": "Add a style and an image to your QR code",
   "main": "lib/qr-code-styling.js",
   "types": "lib/index.d.ts",
@@ -63,5 +63,5 @@
   "bugs": {
     "url": "https://github.com/aiddroid/qr-code-styling/issues"
   },
-  "homepage": "https://the-qr-generator.com"
+  "homepage": "https://bulk-qr.app"
 }

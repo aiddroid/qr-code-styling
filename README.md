@@ -244,7 +244,7 @@ Gradient colorStops structure
 
 If you find this library useful, you may also like:
 
-- [Character Count Tool](http://mojisuu-kaunto.com)
+- [Character Count Tool](https://mojisuu-kaunto.com)
 - [Cute Emoji & Kaomoji](https://kawaiiemoji.com)
 
 ### License
